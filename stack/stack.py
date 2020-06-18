@@ -19,40 +19,28 @@ class Stack:
 
     def __len__(self):
         return self.size
+        
         # return len(self.storage)
 
     def push(self, value): 
         self.storage.add_to_head(value)
         self.size += 1
+
         # self.storage.insert(0, value)
 
     def pop(self):
-        if self.size > 1:
+        if self.size >= 1:
+            removed_value = self.storage.head.value
             self.storage.remove_head()
             self.size -= 1
-            return self.storage.head.value
+            return removed_value
 
-        # if self.storage.__len__() < 1:
-        #     print('List is empty')
-        #     return
-        # else:
+        # if len(self.storage) >= 1:
+        #     removed_value = self.storage[0]
         #     self.storage.pop(0)
+        #     return removed_value
+        # else:
+        #     return None
 
 
-test = Stack()
-test.push(100)
-test.push(101)
-test.push(105)
-# test.push(2)
-# test.push(21)
-# test.push(20)
-# test.push(24)
-# print(test.pop())
-
-node = test.storage.head
-while node:
-    if node is None:
-        None
-    print(node.value)
-    node = node.next_node
 
