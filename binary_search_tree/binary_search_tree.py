@@ -17,6 +17,8 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
+        # take the current value of our node
+        # compare to the new value we want to insert
         pass
 
     # Return True if the tree contains the value

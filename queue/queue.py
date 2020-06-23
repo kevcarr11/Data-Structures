@@ -38,10 +38,8 @@ class Queue:
         # else:
         #     return None
 
-        if self.size >= 1:
-            removed_value = self.storage.head.value
-            self.storage.remove_head()
-            self.size -= 1
-            return removed_value
-        else:
+        if self.size == 0:
             return None
+        self.size -= 1
+        return self.storage.remove_head()
+      

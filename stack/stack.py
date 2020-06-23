@@ -29,18 +29,15 @@ class Stack:
         # self.storage.insert(0, value)
 
     def pop(self):
-        if self.size >= 1:
-            removed_value = self.storage.head.value
-            self.storage.remove_head()
-            self.size -= 1
-            return removed_value
+        if self.size == 0:
+            return None
+        self.size -= 1
+        return self.storage.remove_head()
 
-        # if len(self.storage) >= 1:
-        #     removed_value = self.storage[0]
-        #     self.storage.pop(0)
-        #     return removed_value
-        # else:
-        #     return None
-
+        # if len(self.storage) == 0:
+        #       return None
+    #     return self.storage.pop(0)
+  
+        
 
 
