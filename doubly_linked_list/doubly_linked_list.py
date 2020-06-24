@@ -95,21 +95,10 @@ class DoublyLinkedList:
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        if not self.head and not self.tail:
-            return None
-        if self.head.next is None:
-            removed_value = self.tail.value
-            self.head = None
-            self.tail = None
-            self.length -= 1
-            return removed_value
-        n = self.head
-        while n.next is not None:
-            n = n.next
-        removed_value = self.tail.value
-        n.prev.next = None
-        self.length -= 1
-        return removed_value
+        
+        rtn_value = self.tail.value
+        self.delete(self.tail)
+        return rtn_value
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
@@ -132,15 +121,25 @@ class DoublyLinkedList:
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
+        # if DLL is empty do nothing
         if self.tail is None and self.head is None:
             return 
+
+        # decrement length of the DLL
         self.length -= 1
+
+        # if DLL has only one element, remove by setting head
+        # and tail pointers to none 
         if self.head == self.tail and node == self.head:
             self.head = None
             self.tail = None
+
+        # if node to delete is head set DLL head pointer to node.next
         elif self.head == node:
             self.head = node.next
             node.delete()
+        
+        # if node to delete is tail set DLL head pointer to node.prev
         elif self.tail == node:
             self.tail = node.prev
             node.delete()
