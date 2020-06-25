@@ -21,23 +21,14 @@ class Queue:
         self.storage = LinkedList()
     
     def __len__(self):
-        # return len(self.storage)
-
         return self.size
 
     def enqueue(self, value):
-        # self.storage.append(value)
-
         self.storage.add_to_tail(value)
         self.size += 1
 
 
     def dequeue(self):
-        # if len(self.storage) >= 1:
-        #     return self.storage.pop(0)
-        # else:
-        #     return None
-
         if self.size == 0:
             return None
         self.size -= 1

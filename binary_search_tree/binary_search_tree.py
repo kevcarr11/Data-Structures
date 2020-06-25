@@ -9,6 +9,9 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from stack import Stack
+from queue import Queue
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -105,40 +108,40 @@ class BSTNode:
     # in an iterative breadth first traversal
     def bft_print(self, node):
         # create a queue for nodes 
-        queue = []
+        queue = Queue()
         # add first node to the queue
-        queue.append(self)
+        queue.enqueue(self)
         # while queue is not empty 
-        while len(queue) > 0:
+        while queue.__len__() > 0:
             # remove the first node
-            current_node = queue.pop(0)
+            current_node = queue.dequeue()
              # print the removed node
             print(current_node.value)
              # add all children into the queue
             if current_node.right:
-                queue.append(current_node.right)
+                queue.enqueue(current_node.right)
             if current_node.left:
-                queue.append(current_node.left)
+                queue.enqueue(current_node.left)
             
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
         # create stack for nodes that is visited
-        stack = []
+        stack = Stack()
         # add first node to stack which will be the root node
-        stack.append(self)
+        stack.push(self)
         # while stack is not empty 
-        while len(stack) > 0:
+        while stack.__len__() > 0:
             # pop off the stack
             current_node = stack.pop()
             # print that nodes value
             print(current_node.value)
             # add its children to stack 
             if current_node.right:
-                stack.append(current_node.right)
+                stack.push(current_node.right)
             if current_node.left:
-                stack.append(current_node.left)
+                stack.push(current_node.left)
            
             
     # Stretch Goals -------------------------
@@ -146,8 +149,20 @@ class BSTNode:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        # prints node before visiting left and right children
+        print(self.value)
+        if self.left:
+            self.left.pre_order_dft(node)
+        if self.right:
+            self.right.pre_order_dft(node)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+         # prints node after visiting left and right children
+        if self.left:
+            self.left.post_order_dft(node)
+        if self.right:
+            self.right.post_order_dft(node)
+        
+        print(self.value)
+        
