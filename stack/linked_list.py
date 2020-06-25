@@ -37,7 +37,7 @@ class LinkedList:
     def remove_head(self):
         # if list is empty, do nothing
         if not self.head:
-            return None
+            return 0
         # if list only has one element, set head and tail to None
         if self.head.next_node is None:
             head_value = self.head.value
@@ -76,4 +76,3 @@ class LinkedList:
                 max_num = current_node.value
             current_node = current_node.next_node
         return max_num
-
